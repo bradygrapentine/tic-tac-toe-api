@@ -56,6 +56,9 @@ export class App extends Component {
       this.setState(game)
     }
   }
+  // componentDidMount(handleNewGame) {
+  //   this.handleNewGame
+  // }
 
   // ------------------------------------------------------------------------ //
 
