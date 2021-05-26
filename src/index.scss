@@ -64,7 +64,7 @@ ul li {
   transition: 1s font-size ease-in-out;
 }
 ul li.taken {
-  cursor: not-allowed;
+  cursor: not-allowed; // stops clicking
 }
 ul li.small {
   font-size: 4rem;

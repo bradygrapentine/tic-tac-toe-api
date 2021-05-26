@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { GameBoard } from './components/GameBoard'
 
 export class App extends Component {
   state = {
@@ -39,6 +40,7 @@ export class App extends Component {
       this.setState(game)
     }
   }
+
   handleNewGame = async () => {
     // Make a POST request to ask for a new game
     const response = await fetch(
@@ -56,7 +58,8 @@ export class App extends Component {
       this.setState(game)
     }
   }
-  // componentDidMount(handleNewGame) {
+
+  // componentDidMount() {
   //   this.handleNewGame
   // }
 
@@ -64,7 +67,7 @@ export class App extends Component {
 
   render() {
     const header =
-      this.state.winner != null && this.state.winner != 'TIE' // value is null in default case
+      this.state.winner != null // value is null in default case
         ? `${this.state.winner} is the winner`
         : 'Tic Tac Toe'
     return (
@@ -72,21 +75,10 @@ export class App extends Component {
         <h1>
           {header} - <button onClick={this.handleNewGame}>New</button>
         </h1>
-        <ul>
-          {this.state.board.map((boardRow, rowIndex) => {
-            return boardRow.map((cell, columnIndex) => {
-              return (
-                <li
-                  key={columnIndex}
-                  className={cell === ' ' ? '' : 'taken'}
-                  onClick={() => this.handleClickCell(rowIndex, columnIndex)}
-                >
-                  {cell}
-                </li>
-              )
-            })
-          })}
-        </ul>
+        <GameBoard
+          board={this.state.board}
+          handleClickCell={this.handleClickCell}
+        />
       </div>
     )
   }
